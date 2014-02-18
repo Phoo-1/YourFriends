@@ -2,6 +2,13 @@ package main.java.net.bigbadcraft.yourfriends;
 
 import java.io.File;
 
+import main.java.net.bigbadcraft.yourfriends.listeners.NotifyFriendJoinListener;
+import main.java.net.bigbadcraft.yourfriends.listeners.NotifyFriendLeaveListener;
+import main.java.net.bigbadcraft.yourfriends.listeners.PlayerJoinRegisterNameListener;
+import main.java.net.bigbadcraft.yourfriends.utils.ConfigHandler;
+import main.java.net.bigbadcraft.yourfriends.utils.ConfigPath;
+import main.java.net.bigbadcraft.yourfriends.utils.Utils;
+
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -26,10 +33,14 @@ public class YourFriends extends JavaPlugin{
 	
 	/* Configuration settings */
 	public String notification_sound;
+	public boolean notify_on_join;
+	public boolean notify_on_leave;
 	
 	public void onEnable(){
 		saveDefaultConfig();
 		notification_sound = getConfig().getString(ConfigPath.NOTIFICATION_SOUND);
+		notify_on_join = getConfig().getBoolean(ConfigPath.NOTIFY_JOIN);
+		notify_on_leave = getConfig().getBoolean(ConfigPath.NOTIFY_LEAVE);
 		friends_file = new File(getDataFolder(), "friends.yml");
 		pending_friends_file = new File(getDataFolder(), "pendingfriends.yml");
 		conf_handler = new ConfigHandler(this);
@@ -41,6 +52,8 @@ public class YourFriends extends JavaPlugin{
 		conf_handler.reloadPendingConf();
 		friend_manager = new FriendManager(this);
 		getServer().getPluginManager().registerEvents(new PlayerJoinRegisterNameListener(this), this);
+		getServer().getPluginManager().registerEvents(new NotifyFriendJoinListener(this), this);
+		getServer().getPluginManager().registerEvents(new NotifyFriendLeaveListener(this), this);
 		getCommand("yourfriends").setExecutor(new YourFriendsCommand(this));
 	}
 }

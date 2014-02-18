@@ -1,6 +1,8 @@
-package main.java.net.bigbadcraft.yourfriends;
+package main.java.net.bigbadcraft.yourfriends.listeners;
 
 import java.util.ArrayList;
+
+import main.java.net.bigbadcraft.yourfriends.YourFriends;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;

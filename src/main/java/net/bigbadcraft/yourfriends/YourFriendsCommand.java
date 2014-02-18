@@ -58,7 +58,7 @@ public class YourFriendsCommand implements CommandExecutor{
 					}
 				}
 				if (one_args.contains(strings[0].toLowerCase())) {
-					friend_manager.promptSyntax(player, "/yourfriends " + strings[0] + " <player>"); 
+					friend_manager.promptSyntax(player, "/yourfriends " + strings[0] + (strings[0].equals("nudge") ? " <friend>" : " <player>")); 
 				}
 			}
 			else if (strings.length == 2){
@@ -109,6 +109,37 @@ public class YourFriendsCommand implements CommandExecutor{
 						}
 					} else {
 						friend_manager.makeMessage(player, "You currently have no friend requests to accept.");
+					}
+				}
+				else if (strings[0].equalsIgnoreCase("reject")){
+					String target = strings[1];
+					if (friend_manager.hasFriendRequests(player)){
+						if (friend_manager.isValidRequest(player, target)){
+							friend_manager.rejectRequest(player, target);
+							friend_manager.makeMessage(player, "Successfully rejected " + target + "'s friend request."); 
+						} else {
+							friend_manager.makeMessage(player, target + " has not sent you a friend request.");
+						}
+					} else {
+						friend_manager.makeMessage(player, "You currently have no friend requests to reject.");
+					}
+				}
+				else if (strings[0].equalsIgnoreCase("nudge")){
+					Player target = Bukkit.getPlayer(strings[1]);
+					if (target != null){
+						if (friend_manager.hasFriends(player)){
+							if (friend_manager.areFriends(player, target.getName())){
+								friend_manager.notificationPing(target);
+								friend_manager.makeMessage(target, player.getName() + " has nudged you.");
+								friend_manager.makeMessage(player, "Successfully nudged " + target.getName());
+							} else {
+								friend_manager.makeMessage(player, "You cannot nudge " + target.getName() + ".");
+							}
+						} else {
+							friend_manager.makeMessage(player, "You currently have no friends to nudge.");
+						}
+					} else {
+						friend_manager.makeMessage(player, "Cannot nudge offline user " + strings[1] + "."); 
 					}
 				}
 			}

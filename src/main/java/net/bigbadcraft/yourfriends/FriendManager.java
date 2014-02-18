@@ -68,7 +68,11 @@ public class FriendManager{
 	}
 	
 	public void rejectRequest(Player player, String to_reject){
-		
+		plugin.conf_handler.reloadPendingConf();
+		List<String> list = plugin.pending_friends_conf.getStringList(player.getName());
+		list.remove(to_reject);
+		plugin.pending_friends_conf.set(player.getName(), list);
+		plugin.conf_handler.savePendingConf();
 	}
 	
 	public void sendRequest(Player player, Player target){
@@ -102,7 +106,7 @@ public class FriendManager{
 				+ plugin.CYAN + "-/yourfriends reject <player>" + plugin.TEAL + " - Reject player's friend request.\n"
 				+ plugin.CYAN + "-/yourfriends requests" + plugin.TEAL + " - List your current friend requests.\n"
 				+ plugin.CYAN + "-/yourfriends list" + plugin.TEAL + " - List your current friends.\n"
-				+ plugin.CYAN + "-/yourfriends nudge <player>" + plugin.TEAL + " - Nudge your friend for attention.\n"
+				+ plugin.CYAN + "-/yourfriends nudge <friend>" + plugin.TEAL + " - Nudge your friend for attention.\n"
 				+ plugin.TEAL + "---------------------------------";
 	}
 	

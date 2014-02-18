@@ -1,4 +1,4 @@
-package main.java.net.bigbadcraft.yourfriends;
+package main.java.net.bigbadcraft.yourfriends.utils;
 
 import java.io.File;
 import java.io.IOException;

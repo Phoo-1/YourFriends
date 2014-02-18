@@ -1,9 +1,11 @@
-package main.java.net.bigbadcraft.yourfriends;
+package main.java.net.bigbadcraft.yourfriends.utils;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.logging.Level;
+
+import main.java.net.bigbadcraft.yourfriends.YourFriends;
 
 import org.bukkit.configuration.file.YamlConfiguration;
 
