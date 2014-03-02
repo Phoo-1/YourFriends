@@ -66,6 +66,10 @@ public class YourFriendsCommand implements CommandExecutor{
 					Player target = Bukkit.getPlayer(strings[1]);
 					if (target != null){
 						if (!player.getName().equals(target.getName())){
+							if (plugin.friends_conf.getStringList(player.getName()).size() >= plugin.friend_limit){
+								friend_manager.makeMessage(player, "You can only have " + plugin.friend_limit + " friends."); 
+								return true;
+							}
 							if (plugin.friends_conf.getStringList(player.getName()).contains(target.getName())){
 								friend_manager.makeMessage(player, "You already have " + target.getName() + " as your friend."); 
 								return true;

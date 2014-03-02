@@ -18,7 +18,7 @@ public class NotifyFriendJoinListener implements Listener {
 		this.plugin = plugin;
 	}
 	
-	@EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
+	@EventHandler(priority=EventPriority.HIGH,ignoreCancelled=true)
 	public void onFriendJoin(PlayerJoinEvent e){
 		if (plugin.notify_on_join == false) return;
 		Player player = e.getPlayer();

@@ -18,7 +18,7 @@ public class NotifyFriendLeaveListener implements Listener {
 		this.plugin = plugin;
 	}
 	
-	@EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
+	@EventHandler(priority=EventPriority.HIGH,ignoreCancelled=true)
 	public void onFriendLeave(PlayerQuitEvent e){
 		if (plugin.notify_on_leave == false) return;
 		Player player = e.getPlayer();

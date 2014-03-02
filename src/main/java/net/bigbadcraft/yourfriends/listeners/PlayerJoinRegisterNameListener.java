@@ -16,7 +16,7 @@ public class PlayerJoinRegisterNameListener implements Listener {
 		this.plugin = plugin;
 	}
 	
-	@EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
+	@EventHandler(priority=EventPriority.HIGH,ignoreCancelled=true)
 	public void onJoin(PlayerJoinEvent e){
 		String name = e.getPlayer().getName();
 		if (!plugin.friends_conf.contains(name)){

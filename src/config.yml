@@ -3,3 +3,10 @@ notify-on-join: true
 notify-on-leave: true
 # The sound to play to notify players.
 notification-sound: NOTE_PLING
+# True to display online friends when joining the server.
+show-friends: false
+# To display distinguishable scoreboards below players name.
+# <COLOUR>:<1-Enable/0-Disable> Usage: 'AQUA:0' To Disable.
+show-scoreboard: 'AQUA:1'
+# The amount of friends players can have.
+friend-limit: 30
