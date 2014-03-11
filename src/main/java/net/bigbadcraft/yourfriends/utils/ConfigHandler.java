@@ -37,7 +37,7 @@ public class ConfigHandler {
 		try {
 			plugin.friends_conf.save(plugin.friends_file);
 		} catch (IOException e) {
-			plugin.getLogger().log(Level.SEVERE, "Could not save credits config to " + plugin.friends_file, e);
+			Utils.logConsole(Level.SEVERE, "Could not save credits config to " + plugin.friends_file);
 		}
 	}
 	
@@ -62,7 +62,7 @@ public class ConfigHandler {
 		try {
 			plugin.pending_friends_conf.save(plugin.pending_friends_file);
 		} catch (IOException e) {
-			plugin.getLogger().log(Level.SEVERE, "Could not save credits config to " + plugin.pending_friends_file, e);
+			Utils.logConsole(Level.SEVERE, "Could not save credits config to " + plugin.pending_friends_file);
 		}
 	}
 }

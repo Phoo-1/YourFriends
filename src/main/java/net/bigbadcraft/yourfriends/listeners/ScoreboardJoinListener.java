@@ -24,8 +24,8 @@ public class ScoreboardJoinListener implements Listener{
 		values = this.plugin.show_scoreboard.split(":");
 		if (values[1].equals("1")){
 			board = Bukkit.getScoreboardManager().getNewScoreboard();
-			board.registerNewObjective("friendsscoreboard", "dummy");
-			Objective objective = board.getObjective("friendsscoreboard");
+			board.registerNewObjective("scoreboard", "dummy");
+			Objective objective = board.getObjective("scoreboard");
 			objective.setDisplaySlot(DisplaySlot.BELOW_NAME);
 			objective.setDisplayName(ChatColor.valueOf(values[0].toUpperCase()) + "Friend");
 		}
@@ -42,4 +42,5 @@ public class ScoreboardJoinListener implements Listener{
 			}
 		}
 	}
+	
 }
