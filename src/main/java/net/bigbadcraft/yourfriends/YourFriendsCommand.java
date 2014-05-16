@@ -58,7 +58,7 @@ public class YourFriendsCommand implements CommandExecutor{
 					}
 				}
 				if (one_args.contains(strings[0].toLowerCase())) {
-					friend_manager.promptSyntax(player, "/yourfriends " + strings[0] + (strings[0].equals("nudge") ? " <friend>" : " <player>")); 
+					friend_manager.promptSyntax(player, "/friends " + strings[0] + (strings[0].equals("nudge") ? " <friend>" : " <player>")); 
 				}
 			}
 			else if (strings.length == 2){
