@@ -20,7 +20,7 @@ public class YourFriendsCommand implements CommandExecutor{
 		friend_manager = plugin.friend_manager;
 		
 		one_args = new ArrayList<String>();
-		one_args.add("add");
+		one_args.add("invite");
 		one_args.add("delete");
 		one_args.add("accept");
 		one_args.add("reject");
@@ -62,7 +62,7 @@ public class YourFriendsCommand implements CommandExecutor{
 				}
 			}
 			else if (strings.length == 2){
-				if (strings[0].equalsIgnoreCase("add")){
+				if (strings[0].equalsIgnoreCase("invite")){
 					Player target = Bukkit.getPlayer(strings[1]);
 					if (target != null){
 						if (!player.getName().equals(target.getName())){
@@ -83,10 +83,10 @@ public class YourFriendsCommand implements CommandExecutor{
 								friend_manager.makeMessage(player, "You already have sent " + target.getName() + " a friend request."); 
 							}
 						} else {
-							friend_manager.makeMessage(player, "You cannot add yourself.");
+							friend_manager.makeMessage(player, "You cannot invite yourself.");
 						}
 					} else {
-						friend_manager.makeMessage(player, "Cannot add offline user " + strings[1] + ".");
+						friend_manager.makeMessage(player, "Cannot invite offline user " + strings[1] + ".");
 					}
 				}
 				else if (strings[0].equalsIgnoreCase("delete")){
