@@ -46,7 +46,7 @@ public class YourFriendsCommand implements CommandExecutor{
 					if (friend_manager.hasFriends(player)){
 						friend_manager.showFriends(player);
 					} else {
-						friend_manager.makeMessage(player, "You currently have no friends to view.");
+						friend_manager.makeMessage(player, "現在フレンドはいません");
 					}
 					return true;
 				}
@@ -54,7 +54,7 @@ public class YourFriendsCommand implements CommandExecutor{
 					if (friend_manager.hasFriendRequests(player)){
 						friend_manager.showFriendRequests(player);
 					} else {
-						friend_manager.makeMessage(player, "You currently have no friend requests.");
+						friend_manager.makeMessage(player, "フレンド申請はありません");
 					}
 				}
 				if (one_args.contains(strings[0].toLowerCase())) {
@@ -71,22 +71,22 @@ public class YourFriendsCommand implements CommandExecutor{
 								return true;
 							}
 							if (plugin.friends_conf.getStringList(player.getName()).contains(target.getName())){
-								friend_manager.makeMessage(player, "You already have " + target.getName() + " as your friend."); 
+								friend_manager.makeMessage(player, "既に " + target.getName() + " はフレンドです"); 
 								return true;
 							}
 							if (!friend_manager.hasTheirRequest(target, player.getName())){
 								friend_manager.sendRequest(player, target);
 								friend_manager.notificationPing(target);
-								friend_manager.makeMessage(target, player.getName() + " has sent you a friend request.");
-								friend_manager.makeMessage(player, "Successfully sent a friend request to " + target.getName() + ".");
+								friend_manager.makeMessage(target, player.getName() + " からフレンド申請が届きました");
+								friend_manager.makeMessage(player, target.getName() + " へフレンド申請を送信しました");
 							} else {
-								friend_manager.makeMessage(player, "You already have sent " + target.getName() + " a friend request."); 
+								friend_manager.makeMessage(player, "既に " + target.getName() + " へフレンド申請済みです"); 
 							}
 						} else {
-							friend_manager.makeMessage(player, "You cannot invite yourself.");
+							friend_manager.makeMessage(player, "自分へ申請することは出来ません");
 						}
 					} else {
-						friend_manager.makeMessage(player, "Cannot invite offline user " + strings[1] + ".");
+						friend_manager.makeMessage(player, strings[1] + "はオフラインです");
 					}
 				}
 				else if (strings[0].equalsIgnoreCase("delete")){
@@ -94,12 +94,12 @@ public class YourFriendsCommand implements CommandExecutor{
 					if (friend_manager.hasFriends(player)){
 						if (friend_manager.areFriends(player, target)){
 							friend_manager.deleteFriend(player, target);
-							friend_manager.makeMessage(player, "Successfully removed " + target + " from your friends list."); 
+							friend_manager.makeMessage(player, target + " をフレンドから削除しました"); 
 						} else {
-							friend_manager.makeMessage(player, target + " is not your friend.");
+							friend_manager.makeMessage(player, target + " はフレンドから削除されました");
 						}
 					} else {
-						friend_manager.makeMessage(player, "You currently have no friends to delete.");
+						friend_manager.makeMessage(player, "削除できるフレンドがいません");
 					}
 				}
 				else if (strings[0].equalsIgnoreCase("accept")){
@@ -107,12 +107,12 @@ public class YourFriendsCommand implements CommandExecutor{
 					if (friend_manager.hasFriendRequests(player)){
 						if (friend_manager.isValidRequest(player, target)){
 							friend_manager.acceptRequest(player, target);
-							friend_manager.makeMessage(player, "Successfully accepted " + target + "'s friend request.");
+							friend_manager.makeMessage(player, target + "のフレンド申請を承認しました");
 						} else {
-							friend_manager.makeMessage(player, target + " has not sent you a friend request.");
+							friend_manager.makeMessage(player, target + " はフレンド申請を送信していません");
 						}
 					} else {
-						friend_manager.makeMessage(player, "You currently have no friend requests to accept.");
+						friend_manager.makeMessage(player, "承認できるフレンド申請はありません");
 					}
 				}
 				else if (strings[0].equalsIgnoreCase("reject")){
@@ -120,12 +120,12 @@ public class YourFriendsCommand implements CommandExecutor{
 					if (friend_manager.hasFriendRequests(player)){
 						if (friend_manager.isValidRequest(player, target)){
 							friend_manager.rejectRequest(player, target);
-							friend_manager.makeMessage(player, "Successfully rejected " + target + "'s friend request."); 
+							friend_manager.makeMessage(player, target + "のフレンド申請を拒否しま");
 						} else {
-							friend_manager.makeMessage(player, target + " has not sent you a friend request.");
+							friend_manager.makeMessage(player, target + " はフレンド申請を送信していません");
 						}
 					} else {
-						friend_manager.makeMessage(player, "You currently have no friend requests to reject.");
+						friend_manager.makeMessage(player, "拒否できるフレンド申請はありません");
 					}
 				}
 				else if (strings[0].equalsIgnoreCase("nudge")){
