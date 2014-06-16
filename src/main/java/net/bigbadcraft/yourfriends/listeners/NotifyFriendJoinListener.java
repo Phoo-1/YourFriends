@@ -26,7 +26,7 @@ public class NotifyFriendJoinListener implements Listener {
 			List<String> list = plugin.friends_conf.getStringList(players.getName());
 			if (list.contains(player.getName())){
 				plugin.friend_manager.notificationPing(players);
-				plugin.friend_manager.makeMessage(players, "Your friend " + player.getName() + " has joined the server.");
+				plugin.friend_manager.makeMessage(players, "friend " + player.getName() + " がログインしました");
 			}
 		}
 	}
